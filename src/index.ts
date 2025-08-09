@@ -119,7 +119,7 @@ function createInstance(
         auth,
         (instanceConfig || {}).subscribedDomain
       );
-      const newConfig = await enhanceConfig(config, destination);
+      const newConfig = await enhanceConfig(config, destination, (instanceConfig || {}).subscribedDomain);
 
       if (
         newConfig.xsrfHeaderName &&
