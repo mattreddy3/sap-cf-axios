@@ -14,7 +14,8 @@ const tokenCache: { [key: string]: { value: string; expires: Date } } = {};
 
 export default async function enhanceConfig(
   config: InternalAxiosRequestConfig,
-  destination: IDestinationData<IHTTPDestinationConfiguration>
+  destination: IDestinationData<IHTTPDestinationConfiguration>,
+  subdomain: string
 ) {
   // add auth header
   const destinationConfiguration = destination.destinationConfiguration;
@@ -78,12 +79,14 @@ export default async function enhanceConfig(
         ? await readConnectivity(
             destinationConfiguration.CloudConnectorLocationId,
             authHeader,
-            true
+            true,
+            subdomain
           )
         : await readConnectivity(
             destinationConfiguration.CloudConnectorLocationId,
             undefined,
-            false
+            false,
+            subdomain
           );
 
     config = {
