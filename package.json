@@ -1,6 +1,6 @@
 {
-  "name": "sap-cf-axios",
-  "version": "1.0.2",
+  "name": "@redfig-open/sap-cf-axios",
+  "version": "1.0.3",
   "description": "Wrap axios to use the SAP Cloud Foundry destination Service",
   "main": "dist/index.js",
   "files": [

@@ -92,7 +92,8 @@ function createInstance(destinationName, instanceConfig, xsrfConfig = "options")
         const auth = ((((_a = config.headers) === null || _a === void 0 ? void 0 : _a.Authorization) || ((_b = config.headers) === null || _b === void 0 ? void 0 : _b.authorization)));
         try {
             const destination = yield (0, sap_cf_destconn_1.readDestination)(destinationName, auth, (instanceConfig || {}).subscribedDomain);
-            const newConfig = yield (0, configEnhancer_1.default)(config, destination);
+            const subdomain = (instanceConfig || {}).subscribedDomain || "";
+            const newConfig = yield (0, configEnhancer_1.default)(config, destination, subdomain);
             if (newConfig.xsrfHeaderName &&
                 newConfig.xsrfHeaderName !== "X-XSRF-TOKEN" &&
                 ((_c = newConfig.headers) === null || _c === void 0 ? void 0 : _c[newConfig.xsrfHeaderName]) !== "Fetch") {
